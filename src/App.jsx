@@ -160,12 +160,14 @@ function App() {
   }
 
   const handleClear = () => {
-    if (window.confirm('Are you sure you want to clear all form fields?')) {
+    if (window.confirm('Are you sure you want to clear all form fields and start a new patient?')) {
       const defaultData = getDefaultFormData()
       setFormData(defaultData)
+      setActiveTab('shift')
       // Clear localStorage as well
       try {
         localStorage.removeItem(STORAGE_KEY)
+        localStorage.removeItem(TAB_STORAGE_KEY)
       } catch (error) {
         console.error('Error clearing localStorage:', error)
       }
@@ -184,7 +186,17 @@ function App() {
   return (
     <div className="container">
       <header>
-        <h1>SOAP Report Generator</h1>
+        <div className="header-content">
+          <h1>SOAP Report Generator</h1>
+          <button 
+            type="button" 
+            className="btn btn-new-patient" 
+            onClick={handleClear}
+            title="Clear all fields and start a new patient"
+          >
+            New Patient
+          </button>
+        </div>
       </header>
 
       <div className="main-content">
