@@ -67,14 +67,7 @@ export function generateReport(formData) {
     const lowerExtremities = formData.lowerExtremities || '';
     const back = formData.back || '';
     const genitalia = formData.genitalia || '';
-    const vitalTime = formatTime(formData.vitalTime) || encounterTime;
-    const pulse = formData.pulse || '';
-    const respRate = formData.respRate || '';
-    const bpSystolic = formData.bpSystolic || '';
-    const bpDiastolic = formData.bpDiastolic || '';
-    const temp = formData.temp || '';
-    const spo2 = formData.spo2 || '';
-    const glucose = formData.glucose || '';
+    const vitals = formData.vitals || [];
     const interventions = formData.interventions || [];
     const assessment = formData.assessment || '';
     const plan = formData.plan || '';
@@ -168,26 +161,49 @@ export function generateReport(formData) {
         report += physicalExamParts.join('\n');
     }
     
-    // Vitals
-    const vitalsParts = [];
-    if (pulse) vitalsParts.push(`P ${pulse}`);
-    if (respRate) vitalsParts.push(`RR ${respRate}`);
-    if (bpSystolic && bpDiastolic) vitalsParts.push(`BP ${bpSystolic}/${bpDiastolic}`);
-    if (temp) vitalsParts.push(`Temp ${temp}°F`);
-    if (spo2) vitalsParts.push(`SpO2 ${spo2}%`);
-    if (glucose) vitalsParts.push(`Glucose ${glucose} mg/dL`);
-    
-    if (vitalsParts.length > 0) {
+    // Vitals (display separately, stacked)
+    if (vitals && vitals.length > 0) {
         if (physicalExamParts.length > 0) report += '\n\n';
-        report += `${vitalTime}: ${vitalsParts.join(', ')}`;
+        report += 'Vitals\n';
+        const vitalsLines = vitals.map(vital => `[${vital.time}] - ${vital.text}`).join('\n');
+        report += vitalsLines;
     }
     
-    // Interventions
+    // Timeline (interventions + vitals taken entries)
+    const timelineItems = []
+    
+    // Add vitals taken entries to timeline
+    if (vitals && vitals.length > 0) {
+        vitals.forEach(vital => {
+            timelineItems.push({
+                time: vital.time,
+                text: 'Vitals taken'
+            })
+        })
+    }
+    
+    // Add interventions to timeline
     if (interventions && interventions.length > 0) {
-        if (physicalExamParts.length > 0 || vitalsParts.length > 0) report += '\n\n';
-        report += 'Timeline\n';
-        const interventionLines = interventions.map(int => `[${int.time}] - ${int.text}`).join('\n');
-        report += interventionLines;
+        interventions.forEach(intervention => {
+            timelineItems.push({
+                time: intervention.time,
+                text: intervention.text
+            })
+        })
+    }
+    
+    // Sort timeline by time and display
+    if (timelineItems.length > 0) {
+        timelineItems.sort((a, b) => {
+            const timeA = a.time.replace(':', '')
+            const timeB = b.time.replace(':', '')
+            return timeA.localeCompare(timeB)
+        })
+        
+        if (physicalExamParts.length > 0 || (vitals && vitals.length > 0)) report += '\n\n'
+        report += 'Timeline\n'
+        const timelineLines = timelineItems.map(item => `[${item.time}] - ${item.text}`).join('\n')
+        report += timelineLines
     }
     
     report += '\n\n';

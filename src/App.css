@@ -391,6 +391,97 @@ header p {
     background: #c82333;
 }
 
+.timeline-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.timeline-subsection {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.timeline-subsection h3 {
+    font-size: 1em;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 4px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.vitals-container {
+    margin-top: 8px;
+}
+
+.vitals-form {
+    margin-bottom: 12px;
+}
+
+.vitals-input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.vitals-fields-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 8px;
+}
+
+.vitals-notes-field {
+    margin-top: 4px;
+}
+
+.vitals-add-button {
+    flex: 0 0 auto;
+    margin-top: 4px;
+}
+
+.vitals-add-button .btn {
+    padding: 6px 14px;
+    font-size: 0.9em;
+    white-space: nowrap;
+}
+
+.vitals-add-button .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.vitals-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 12px;
+}
+
+.vital-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 2px;
+}
+
+.vital-time {
+    font-weight: 600;
+    color: #495057;
+    min-width: 60px;
+    font-size: 0.9em;
+}
+
+.vital-text {
+    flex: 1;
+    color: #212529;
+    font-size: 0.9em;
+}
+
 .form-actions {
     display: flex;
     gap: 8px;
