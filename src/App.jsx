@@ -19,6 +19,10 @@ const getDefaultFormData = () => ({
   endTime: '',
   encounterTime: '',
   age: '',
+  ageYears: '',
+  ageMonths: '',
+  weight: '',
+  weightUnit: 'lbs',
   gender: '',
   chiefComplaint: '',
   symptoms: '',
@@ -116,6 +120,15 @@ function App() {
         // Ensure vitals is an array
         if (!Array.isArray(parsed.vitals)) {
           parsed.vitals = []
+        }
+        // Migrate old age field to ageYears
+        if (parsed.age && !parsed.ageYears && !parsed.ageMonths) {
+          parsed.ageYears = parsed.age
+          delete parsed.age
+        }
+        // Ensure weightUnit has a default value
+        if (!parsed.weightUnit) {
+          parsed.weightUnit = 'lbs'
         }
         // Merge with defaults to handle any missing fields
         return { ...getDefaultFormData(), ...parsed }

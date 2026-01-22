@@ -3,7 +3,7 @@ function Assessment({ formData, onChange }) {
     <div className="form-group">
         <h2><i className="fas fa-diagnoses"></i> Assessment/Impression</h2>
       <div className="form-field">
-        <label htmlFor="assessment"><i className="fas fa-clipboard-check"></i> Assessment/Impression</label>
+        <label htmlFor="assessment">Assessment/Impression</label>
         <textarea
           id="assessment"
           value={formData.assessment}

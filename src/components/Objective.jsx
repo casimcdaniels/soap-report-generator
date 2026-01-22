@@ -9,7 +9,7 @@ function Objective({ formData, onChange }) {
       <div className="form-group">
         <h2><i className="fas fa-user-md"></i> Physical Exam</h2>
         <div className="form-field">
-          <label htmlFor="loc"><i className="fas fa-brain"></i> LOC</label>
+          <label htmlFor="loc">LOC</label>
           <input
             type="text"
             id="loc"
@@ -19,11 +19,11 @@ function Objective({ formData, onChange }) {
           />
         </div>
         <div className="form-field">
-          <label htmlFor="gcsEyes"><i className="fas fa-head-side-virus"></i> GCS</label>
+          <label htmlFor="gcsEyes">GCS</label>
           <GCSInput formData={formData} onChange={onChange} />
         </div>
         <div className="form-field">
-          <label htmlFor="airway"><i className="fas fa-wind"></i> Airway</label>
+          <label htmlFor="airway">Airway</label>
           <input
             type="text"
             id="airway"
@@ -33,7 +33,7 @@ function Objective({ formData, onChange }) {
           />
         </div>
         <div className="form-field">
-          <label htmlFor="breathing"><i className="fas fa-lungs"></i> Breathing</label>
+          <label htmlFor="breathing">Breathing</label>
           <input
             type="text"
             id="breathing"
@@ -43,7 +43,7 @@ function Objective({ formData, onChange }) {
           />
         </div>
         <div className="form-field">
-          <label htmlFor="circulation"><i className="fas fa-heartbeat"></i> Circulation</label>
+          <label htmlFor="circulation">Circulation</label>
           <input
             type="text"
             id="circulation"
@@ -53,7 +53,7 @@ function Objective({ formData, onChange }) {
           />
         </div>
         <div className="form-field">
-          <label htmlFor="heent"><i className="fas fa-eye"></i> HEENT</label>
+          <label htmlFor="heent">HEENT</label>
           <input
             type="text"
             id="heent"
@@ -63,7 +63,7 @@ function Objective({ formData, onChange }) {
           />
         </div>
         <div className="form-field">
-          <label htmlFor="neck"><i className="fas fa-neck-tie"></i> Neck</label>
+          <label htmlFor="neck">Neck</label>
           <input
             type="text"
             id="neck"
@@ -73,7 +73,7 @@ function Objective({ formData, onChange }) {
           />
         </div>
         <div className="form-field">
-          <label htmlFor="chest"><i className="fas fa-lungs-virus"></i> Chest</label>
+          <label htmlFor="chest">Chest</label>
           <input
             type="text"
             id="chest"
@@ -83,7 +83,7 @@ function Objective({ formData, onChange }) {
           />
         </div>
         <div className="form-field">
-          <label htmlFor="upperExtremities"><i className="fas fa-hand-paper"></i> Upper Extremities</label>
+          <label htmlFor="upperExtremities">Upper Extremities</label>
           <input
             type="text"
             id="upperExtremities"
@@ -93,7 +93,7 @@ function Objective({ formData, onChange }) {
           />
         </div>
         <div className="form-field">
-          <label htmlFor="abdomen"><i className="fas fa-stomach"></i> Abdomen</label>
+          <label htmlFor="abdomen">Abdomen</label>
           <input
             type="text"
             id="abdomen"
@@ -103,7 +103,7 @@ function Objective({ formData, onChange }) {
           />
         </div>
         <div className="form-field">
-          <label htmlFor="pelvis"><i className="fas fa-bone"></i> Pelvis</label>
+          <label htmlFor="pelvis">Pelvis</label>
           <input
             type="text"
             id="pelvis"
@@ -113,7 +113,7 @@ function Objective({ formData, onChange }) {
           />
         </div>
         <div className="form-field">
-          <label htmlFor="lowerExtremities"><i className="fas fa-walking"></i> Lower Extremities</label>
+          <label htmlFor="lowerExtremities">Lower Extremities</label>
           <input
             type="text"
             id="lowerExtremities"
@@ -123,7 +123,7 @@ function Objective({ formData, onChange }) {
           />
         </div>
         <div className="form-field">
-          <label htmlFor="back"><i className="fas fa-spine"></i> Back</label>
+          <label htmlFor="back">Back</label>
           <input
             type="text"
             id="back"
@@ -133,7 +133,7 @@ function Objective({ formData, onChange }) {
           />
         </div>
         <div className="form-field">
-          <label htmlFor="genitalia"><i className="fas fa-user-shield"></i> Genitalia/Buttocks</label>
+          <label htmlFor="genitalia">Genitalia/Buttocks</label>
           <input
             type="text"
             id="genitalia"

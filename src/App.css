@@ -170,6 +170,8 @@ header p {
     border-left: 2px solid #e0e4e8;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
+    min-height: 0;
 }
 
 .preview-header {
@@ -189,6 +191,71 @@ header p {
 .form-group {
     padding: 10px 12px;
     margin-bottom: 8px;
+}
+
+.patient-info-group {
+    padding: 8px 12px;
+    margin-bottom: 6px;
+}
+
+.patient-info-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.patient-info-field {
+    max-width: 300px;
+}
+
+.patient-info-field:has(input[type="number"][id="ageYears"]) {
+    max-width: 200px;
+}
+
+.patient-info-sex-field {
+    max-width: 100px;
+}
+
+.patient-info-sex-select {
+    width: 100% !important;
+}
+
+.patient-info-field:has(input[id="weight"]) {
+    max-width: 250px;
+}
+
+.patient-info-row {
+    gap: 6px;
+    margin-bottom: 4px;
+    grid-template-columns: 2fr 0.8fr 2fr;
+    display: grid;
+    align-items: end;
+}
+
+.patient-info-field {
+    margin-bottom: 4px;
+}
+
+.patient-info-field label {
+    font-size: 0.8em;
+    margin-bottom: 2px;
+}
+
+.patient-info-age-field {
+    max-width: 200px;
+}
+
+.patient-info-sex-field {
+    max-width: 100px;
+}
+
+.patient-info-weight-field {
+    max-width: 250px;
+}
+
+.patient-info-input {
+    padding: 4px 6px !important;
+    font-size: 0.85em !important;
 }
 
 .form-group h2 {
@@ -676,6 +743,7 @@ header p {
     background: #f8f9fa;
     color: #212529;
     min-height: 600px;
+    overflow: visible;
 }
 
 #reportPreview:focus {

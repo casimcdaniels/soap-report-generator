@@ -3,7 +3,7 @@ function Subjective({ formData, onChange }) {
     <>
       <div className="form-group">
         <div className="form-field">
-          <label htmlFor="chiefComplaint"><i className="fas fa-exclamation-triangle"></i> Chief Complaint</label>
+          <label htmlFor="chiefComplaint">Chief Complaint</label>
           <input
             type="text"
             id="chiefComplaint"
@@ -13,12 +13,22 @@ function Subjective({ formData, onChange }) {
             required
           />
         </div>
+        <div className="form-field">
+          <label htmlFor="generalAssessment">Patient Presentation</label>
+          <textarea
+            id="generalAssessment"
+            value={formData.generalAssessment}
+            onChange={(e) => onChange('generalAssessment', e.target.value)}
+            rows="3"
+            placeholder="e.g., 32-year-old female found on backboard with C-collar in place, zone 1, bed 3. Patient appears anxious, diaphoretic, alert and oriented x4, cooperative. Patient arrived via EMS"
+          />
+        </div>
       </div>
 
       <div className="form-group">
         <h2><i className="fas fa-history"></i> SAMPLE History</h2>
         <div className="form-field">
-          <label htmlFor="symptoms"><i className="fas fa-notes-medical"></i> S - Signs & Symptoms</label>
+          <label htmlFor="symptoms">S - Signs & Symptoms</label>
           <textarea
             id="symptoms"
             value={formData.symptoms}
@@ -28,7 +38,7 @@ function Subjective({ formData, onChange }) {
           />
         </div>
         <div className="form-field">
-          <label htmlFor="allergies"><i className="fas fa-allergies"></i> A - Allergies</label>
+          <label htmlFor="allergies">A - Allergies</label>
           <input
             type="text"
             id="allergies"
@@ -38,7 +48,7 @@ function Subjective({ formData, onChange }) {
           />
         </div>
         <div className="form-field">
-          <label htmlFor="medications"><i className="fas fa-pills"></i> M - Medications</label>
+          <label htmlFor="medications">M - Medications</label>
           <input
             type="text"
             id="medications"
@@ -48,7 +58,7 @@ function Subjective({ formData, onChange }) {
           />
         </div>
         <div className="form-field">
-          <label htmlFor="pastHistory"><i className="fas fa-file-medical-alt"></i> P - Past Medical History</label>
+          <label htmlFor="pastHistory">P - Past Medical History</label>
           <input
             type="text"
             id="pastHistory"
@@ -58,7 +68,7 @@ function Subjective({ formData, onChange }) {
           />
         </div>
         <div className="form-field">
-          <label htmlFor="lastOral"><i className="fas fa-utensils"></i> L - Last Oral Intake</label>
+          <label htmlFor="lastOral">L - Last Oral Intake</label>
           <input
             type="text"
             id="lastOral"
@@ -68,7 +78,7 @@ function Subjective({ formData, onChange }) {
           />
         </div>
         <div className="form-field">
-          <label htmlFor="events"><i className="fas fa-car-crash"></i> E - Events Leading to Injury/Illness</label>
+          <label htmlFor="events">E - Events Leading to Injury/Illness</label>
           <textarea
             id="events"
             value={formData.events}
@@ -82,7 +92,7 @@ function Subjective({ formData, onChange }) {
       <div className="form-group">
         <h2><i className="fas fa-question-circle"></i> OPQRST</h2>
         <div className="form-field">
-          <label htmlFor="onset"><i className="fas fa-play-circle"></i> O - Onset</label>
+          <label htmlFor="onset">O - Onset</label>
           <input
             type="text"
             id="onset"
@@ -92,7 +102,7 @@ function Subjective({ formData, onChange }) {
           />
         </div>
         <div className="form-field">
-          <label htmlFor="provokes"><i className="fas fa-arrows-alt"></i> P - Provokes/Palliates</label>
+          <label htmlFor="provokes">P - Provokes/Palliates</label>
           <input
             type="text"
             id="provokes"
@@ -102,7 +112,7 @@ function Subjective({ formData, onChange }) {
           />
         </div>
         <div className="form-field">
-          <label htmlFor="quality"><i className="fas fa-shapes"></i> Q - Quality</label>
+          <label htmlFor="quality">Q - Quality</label>
           <input
             type="text"
             id="quality"
@@ -112,7 +122,7 @@ function Subjective({ formData, onChange }) {
           />
         </div>
         <div className="form-field">
-          <label htmlFor="radiation"><i className="fas fa-arrows-alt-h"></i> R - Radiation</label>
+          <label htmlFor="radiation">R - Radiation</label>
           <input
             type="text"
             id="radiation"
@@ -122,7 +132,7 @@ function Subjective({ formData, onChange }) {
           />
         </div>
         <div className="form-field">
-          <label htmlFor="severity"><i className="fas fa-chart-line"></i> S - Severity (1-10)</label>
+          <label htmlFor="severity">S - Severity (1-10)</label>
           <input
             type="number"
             id="severity"
@@ -134,27 +144,13 @@ function Subjective({ formData, onChange }) {
           />
         </div>
         <div className="form-field">
-          <label htmlFor="time"><i className="fas fa-stopwatch"></i> T - Time</label>
+          <label htmlFor="time">T - Time</label>
           <input
             type="text"
             id="time"
             value={formData.time}
             onChange={(e) => onChange('time', e.target.value)}
             placeholder="e.g., Started at time of impact (1330), constant since onset, no relief"
-          />
-        </div>
-      </div>
-
-      <div className="form-group">
-        <h2><i className="fas fa-clipboard-list"></i> General Assessment</h2>
-        <div className="form-field">
-          <label htmlFor="generalAssessment"><i className="fas fa-user-injured"></i> Patient Presentation</label>
-          <textarea
-            id="generalAssessment"
-            value={formData.generalAssessment}
-            onChange={(e) => onChange('generalAssessment', e.target.value)}
-            rows="3"
-            placeholder="e.g., 32-year-old female found on backboard with C-collar in place, zone 1, bed 3. Patient appears anxious, diaphoretic, alert and oriented x4, cooperative. Patient arrived via EMS"
           />
         </div>
       </div>

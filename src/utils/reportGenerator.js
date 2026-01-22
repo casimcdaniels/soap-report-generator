@@ -28,8 +28,40 @@ export function generateReport(formData) {
     const date = formatDate(formData.date);
     const timeRange = formatTimeRange(formData.startTime, formData.endTime);
     const encounterTime = formatTime(formData.encounterTime);
-    const age = formData.age || '';
+    const ageYears = formData.ageYears || '';
+    const ageMonths = formData.ageMonths || '';
+    const weight = formData.weight || '';
+    const weightUnit = formData.weightUnit || 'lbs';
     const gender = formData.gender || '';
+    
+    // Format age display
+    let ageDisplay = '';
+    if (ageYears && ageMonths) {
+        ageDisplay = `${ageYears}yo, ${ageMonths}mo`;
+    } else if (ageYears) {
+        ageDisplay = `${ageYears}yo`;
+    } else if (ageMonths) {
+        ageDisplay = `${ageMonths}mo`;
+    }
+    
+    // Format weight display with conversion (always show kg first, then lbs)
+    let weightDisplay = '';
+    if (weight) {
+        const weightValue = parseFloat(weight);
+        if (!isNaN(weightValue)) {
+            let kgValue, lbsValue;
+            if (weightUnit === 'lbs') {
+                kgValue = (weightValue / 2.20462).toFixed(1);
+                lbsValue = weightValue.toFixed(1);
+            } else {
+                kgValue = weightValue.toFixed(1);
+                lbsValue = (weightValue * 2.20462).toFixed(1);
+            }
+            weightDisplay = `${kgValue} kg (${lbsValue} lbs)`;
+        } else {
+            weightDisplay = `${weight} ${weightUnit}`;
+        }
+    }
     const chiefComplaint = formData.chiefComplaint || '';
 
     // SAMPLE History
@@ -83,11 +115,14 @@ export function generateReport(formData) {
     if (encounterTime) {
         report += `Time: ${encounterTime}\n`;
     }
-    if (encounterTime && (age || gender)) {
+    if (encounterTime && (ageDisplay || weightDisplay || gender)) {
         report += '\n';
     }
-    if (age) {
-        report += `Age: ${age}\n`;
+    if (ageDisplay) {
+        report += `Age: ${ageDisplay}\n`;
+    }
+    if (weightDisplay) {
+        report += `Weight: ${weightDisplay}\n`;
     }
     if (gender) {
         report += `Sex: ${gender}\n`;
