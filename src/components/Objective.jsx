@@ -7,6 +7,18 @@ function Objective({ formData, onChange }) {
   return (
     <>
       <div className="form-group">
+        <div className="form-field">
+          <label htmlFor="generalAssessment">General Impression</label>
+          <textarea
+            id="generalAssessment"
+            value={formData.generalAssessment}
+            onChange={(e) => onChange('generalAssessment', e.target.value)}
+            rows="3"
+            placeholder="e.g., 32-year-old female found on backboard with C-collar in place, zone 1, bed 3. Patient appears anxious, diaphoretic, alert and oriented x4, cooperative. Patient arrived via EMS"
+          />
+        </div>
+      </div>
+      <div className="form-group">
         <h2><i className="fas fa-user-md"></i> Physical Exam</h2>
         <div className="form-field">
           <label htmlFor="loc">LOC</label>

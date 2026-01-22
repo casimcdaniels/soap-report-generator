@@ -41,10 +41,10 @@ const getDefaultFormData = () => ({
   time: '',
   generalAssessment: '',
   loc: '',
-  gcsEyes: '4',
-  gcsVerbal: '5',
-  gcsMotor: '6',
-  gcsTotal: '15',
+  gcsEyes: '',
+  gcsVerbal: '',
+  gcsMotor: '',
+  gcsTotal: '',
   airway: '',
   breathing: '',
   circulation: '',
@@ -174,7 +174,7 @@ function App() {
     }))
   }
 
-  const handleClear = () => {
+  const handleNewPatient = () => {
     if (window.confirm('Are you sure you want to clear all form fields and start a new patient?')) {
       const defaultData = getDefaultFormData()
       setFormData(defaultData)
@@ -186,6 +186,74 @@ function App() {
       } catch (error) {
         console.error('Error clearing localStorage:', error)
       }
+    }
+  }
+
+  const handleClear = () => {
+    if (window.confirm('Are you sure you want to clear all fields on this page? This cannot be undone.')) {
+      const defaultData = getDefaultFormData()
+      const fieldsToClear = {}
+      
+      // Define fields for each tab
+      if (activeTab === 'shift') {
+        fieldsToClear.shiftType = defaultData.shiftType
+        fieldsToClear.date = defaultData.date
+        fieldsToClear.startTime = ''
+        fieldsToClear.endTime = ''
+        fieldsToClear.encounterTime = ''
+      } else if (activeTab === 'patient') {
+        fieldsToClear.ageYears = ''
+        fieldsToClear.ageMonths = ''
+        fieldsToClear.weight = ''
+        fieldsToClear.weightUnit = defaultData.weightUnit
+        fieldsToClear.height = ''
+        fieldsToClear.heightUnit = defaultData.heightUnit
+        fieldsToClear.gender = ''
+      } else if (activeTab === 'subjective') {
+        fieldsToClear.chiefComplaint = ''
+        fieldsToClear.symptoms = ''
+        fieldsToClear.allergies = ''
+        fieldsToClear.medications = ''
+        fieldsToClear.pastHistory = ''
+        fieldsToClear.lastOral = ''
+        fieldsToClear.events = ''
+        fieldsToClear.onset = ''
+        fieldsToClear.provokes = ''
+        fieldsToClear.quality = ''
+        fieldsToClear.radiation = ''
+        fieldsToClear.severity = ''
+        fieldsToClear.time = ''
+      } else if (activeTab === 'objective') {
+        fieldsToClear.generalAssessment = ''
+        fieldsToClear.loc = ''
+        fieldsToClear.gcsEyes = ''
+        fieldsToClear.gcsVerbal = ''
+        fieldsToClear.gcsMotor = ''
+        fieldsToClear.gcsTotal = ''
+        fieldsToClear.airway = ''
+        fieldsToClear.breathing = ''
+        fieldsToClear.circulation = ''
+        fieldsToClear.heent = ''
+        fieldsToClear.neck = ''
+        fieldsToClear.chest = ''
+        fieldsToClear.upperExtremities = ''
+        fieldsToClear.abdomen = ''
+        fieldsToClear.pelvis = ''
+        fieldsToClear.lowerExtremities = ''
+        fieldsToClear.back = ''
+        fieldsToClear.genitalia = ''
+        fieldsToClear.vitals = []
+        fieldsToClear.interventions = []
+      } else if (activeTab === 'assessment') {
+        fieldsToClear.assessment = ''
+      } else if (activeTab === 'plan') {
+        fieldsToClear.plan = ''
+      }
+      
+      setFormData(prev => ({
+        ...prev,
+        ...fieldsToClear
+      }))
     }
   }
 
@@ -206,7 +274,7 @@ function App() {
           <button 
             type="button" 
             className="btn btn-new-patient" 
-            onClick={handleClear}
+            onClick={handleNewPatient}
             title="Clear all fields and start a new patient"
           >
             <i className="fas fa-user-plus"></i> New Patient

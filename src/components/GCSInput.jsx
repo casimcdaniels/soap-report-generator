@@ -1,7 +1,7 @@
 function GCSInput({ formData, onChange }) {
-  const eyes = formData.gcsEyes || '4'
-  const verbal = formData.gcsVerbal || '5'
-  const motor = formData.gcsMotor || '6'
+  const eyes = formData.gcsEyes || ''
+  const verbal = formData.gcsVerbal || ''
+  const motor = formData.gcsMotor || ''
   
   const total = eyes && verbal && motor 
     ? parseInt(eyes) + parseInt(verbal) + parseInt(motor) 
@@ -33,6 +33,7 @@ function GCSInput({ formData, onChange }) {
             onChange={(e) => handleChange('gcsEyes', e.target.value)}
             className="gcs-select"
           >
+            <option value="">Select</option>
             <option value="4">4 - Spontaneous</option>
             <option value="3">3 - To voice</option>
             <option value="2">2 - To pain</option>
@@ -47,6 +48,7 @@ function GCSInput({ formData, onChange }) {
             onChange={(e) => handleChange('gcsVerbal', e.target.value)}
             className="gcs-select"
           >
+            <option value="">Select</option>
             <option value="5">5 - Oriented</option>
             <option value="4">4 - Confused</option>
             <option value="3">3 - Inappropriate words</option>
@@ -62,6 +64,7 @@ function GCSInput({ formData, onChange }) {
             onChange={(e) => handleChange('gcsMotor', e.target.value)}
             className="gcs-select"
           >
+            <option value="">Select</option>
             <option value="6">6 - Obeys commands</option>
             <option value="5">5 - Localizes pain</option>
             <option value="4">4 - Withdraws from pain</option>

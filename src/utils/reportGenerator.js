@@ -173,12 +173,6 @@ export function generateReport(formData) {
         report += `Chief Complaint: ${chiefComplaint}`;
     }
     
-    // Patient Presentation (General Assessment) - moved to be directly under Chief Complaint
-    if (generalAssessment) {
-        if (chiefComplaint) report += '\n\n';
-        report += generalAssessment;
-    }
-    
     // SAMPLE History
     const sampleParts = [];
     if (symptoms && symptoms.trim()) sampleParts.push(`Signs / Symptoms: ${symptoms}`);
@@ -189,7 +183,7 @@ export function generateReport(formData) {
     if (events && events.trim()) sampleParts.push(`Events: ${events}`);
     
     if (sampleParts.length > 0) {
-        if (chiefComplaint || generalAssessment) report += '\n\n';
+        if (chiefComplaint) report += '\n\n';
         report += sampleParts.join('\n');
     }
     
@@ -203,7 +197,7 @@ export function generateReport(formData) {
     if (time !== undefined && time !== null && time !== '') opqrstParts.push(`Time: ${time}`);
     
     if (opqrstParts.length > 0) {
-        if (chiefComplaint || generalAssessment || sampleParts.length > 0) report += '\n\n';
+        if (chiefComplaint || sampleParts.length > 0) report += '\n\n';
         report += opqrstParts.join('\n');
     }
     
@@ -213,8 +207,16 @@ export function generateReport(formData) {
     report += 'Objective\n';
     report += '------------------------\n';
     
+    // General Impression (moved from Subjective)
+    if (generalAssessment) {
+        report += generalAssessment;
+    }
+    
     // Physical Exam
     const physicalExamParts = [];
+    if (generalAssessment && (loc || gcsTotal || airway || breathing || circulation || heent || neck || chest || upperExtremities || abdomen || pelvis || lowerExtremities || back || genitalia)) {
+        report += '\n\n';
+    }
     if (loc) physicalExamParts.push(`LOC: ${loc}`);
     if (gcsTotal) {
       physicalExamParts.push(`GCS: ${gcsTotal}`);
