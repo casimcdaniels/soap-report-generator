@@ -179,14 +179,26 @@ function App() {
   const handleNewPatient = () => {
     if (window.confirm('Are you sure you want to clear all form fields and start a new patient?')) {
       const defaultData = getDefaultFormData()
-      setFormData(defaultData)
+      // Preserve shift type, start time, and end time
+      const preservedData = {
+        shiftType: formData.shiftType,
+        startTime: formData.startTime,
+        endTime: formData.endTime,
+      }
+      // Merge preserved data with defaults, ensuring encounterTime is cleared
+      const newFormData = {
+        ...defaultData,
+        ...preservedData,
+        encounterTime: '' // Explicitly clear encounter time
+      }
+      setFormData(newFormData)
       setActiveTab('shift')
-      // Clear localStorage as well
+      // Save to localStorage
       try {
-        localStorage.removeItem(STORAGE_KEY)
-        localStorage.removeItem(TAB_STORAGE_KEY)
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(newFormData))
+        localStorage.setItem(TAB_STORAGE_KEY, 'shift')
       } catch (error) {
-        console.error('Error clearing localStorage:', error)
+        console.error('Error saving to localStorage:', error)
       }
     }
   }
