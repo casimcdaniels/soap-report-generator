@@ -219,6 +219,9 @@ function App() {
           </div>
 
           <div className="tab-content" data-tab={activeTab}>
+            <button type="button" className="btn btn-clear-form" onClick={handleClear}>
+              <i className="fas fa-eraser"></i> Clear
+            </button>
             {activeTab === 'shift' && (
               <ShiftInfo formData={formData} onChange={handleChange} />
             )}
@@ -237,12 +240,6 @@ function App() {
             {activeTab === 'plan' && (
               <Plan formData={formData} onChange={handleChange} />
             )}
-          </div>
-
-          <div className="form-actions">
-            <button type="button" className="btn btn-secondary" onClick={handleClear}>
-              <i className="fas fa-eraser"></i> Clear Form
-            </button>
           </div>
         </div>
 
