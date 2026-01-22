@@ -48,6 +48,7 @@ const getDefaultFormData = () => ({
   airway: '',
   breathing: '',
   circulation: '',
+  skin: '',
   heent: '',
   neck: '',
   chest: '',
@@ -233,6 +234,7 @@ function App() {
         fieldsToClear.airway = ''
         fieldsToClear.breathing = ''
         fieldsToClear.circulation = ''
+        fieldsToClear.skin = ''
         fieldsToClear.heent = ''
         fieldsToClear.neck = ''
         fieldsToClear.chest = ''

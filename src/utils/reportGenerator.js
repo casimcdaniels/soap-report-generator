@@ -118,6 +118,7 @@ export function generateReport(formData) {
     const airway = formData.airway || '';
     const breathing = formData.breathing || '';
     const circulation = formData.circulation || '';
+    const skin = formData.skin || '';
     const heent = formData.heent || '';
     const neck = formData.neck || '';
     const chest = formData.chest || '';
@@ -214,7 +215,7 @@ export function generateReport(formData) {
     
     // Physical Exam
     const physicalExamParts = [];
-    if (generalAssessment && (loc || gcsTotal || airway || breathing || circulation || heent || neck || chest || upperExtremities || abdomen || pelvis || lowerExtremities || back || genitalia)) {
+    if (generalAssessment && (loc || gcsTotal || airway || breathing || circulation || skin || heent || neck || chest || upperExtremities || abdomen || pelvis || lowerExtremities || back || genitalia)) {
         report += '\n\n';
     }
     if (loc) physicalExamParts.push(`LOC: ${loc}`);
@@ -224,6 +225,7 @@ export function generateReport(formData) {
     if (airway) physicalExamParts.push(`Airway: ${airway}`);
     if (breathing) physicalExamParts.push(`Breathing: ${breathing}`);
     if (circulation) physicalExamParts.push(`Circulation: ${circulation}`);
+    if (skin) physicalExamParts.push(`Skin: ${skin}`);
     if (heent) physicalExamParts.push(`HEENT: ${heent}`);
     if (neck) physicalExamParts.push(`Neck: ${neck}`);
     if (chest) physicalExamParts.push(`Chest: ${chest}`);

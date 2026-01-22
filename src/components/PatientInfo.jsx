@@ -8,30 +8,61 @@ function PatientInfo({ formData, onChange }) {
         <div className="form-field patient-info-field patient-info-age-field">
           <label htmlFor="ageYears">Age</label>
           <div style={{ display: 'flex', gap: '6px', alignItems: 'flex-end' }}>
-            <div style={{ flex: 1 }}>
+            <div style={{ flex: 1, position: 'relative' }}>
               <input
                 type="number"
                 id="ageYears"
                 value={formData.ageYears}
-                onChange={(e) => onChange('ageYears', e.target.value)}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  if (value === '' || (parseInt(value) >= 0 && parseInt(value) <= 120)) {
+                    onChange('ageYears', value);
+                  }
+                }}
                 min="0"
-                placeholder="Years"
+                max="120"
+                placeholder=""
                 className="patient-info-input"
+                style={{ paddingRight: '45px' }}
               />
-           
+              <span style={{
+                position: 'absolute',
+                right: '12px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                fontSize: '0.9rem',
+                color: '#666',
+                pointerEvents: 'none',
+                fontWeight: '500'
+              }}>Years</span>
             </div>
-            <div style={{ flex: 1 }}>
+            <div style={{ flex: 1, position: 'relative' }}>
               <input
                 type="number"
                 id="ageMonths"
                 value={formData.ageMonths}
-                onChange={(e) => onChange('ageMonths', e.target.value)}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  if (value === '' || (parseInt(value) >= 0 && parseInt(value) <= 11)) {
+                    onChange('ageMonths', value);
+                  }
+                }}
                 min="0"
                 max="11"
-                placeholder="Months"
+                placeholder=""
                 className="patient-info-input"
+                style={{ paddingRight: '55px' }}
               />
-           
+              <span style={{
+                position: 'absolute',
+                right: '12px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                fontSize: '0.9rem',
+                color: '#666',
+                pointerEvents: 'none',
+                fontWeight: '500'
+              }}>Months</span>
             </div>
           </div>
         </div>

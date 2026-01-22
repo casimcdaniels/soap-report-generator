@@ -61,7 +61,17 @@ function Objective({ formData, onChange }) {
             id="circulation"
             value={formData.circulation}
             onChange={(e) => onChange('circulation', e.target.value)}
-            placeholder="e.g., Strong, regular radial pulse present bilaterally. Skin warm, pale, diaphoretic. Capillary refill less than 2 seconds"
+            placeholder="e.g., Strong, regular radial pulse present bilaterally. Capillary refill less than 2 seconds"
+          />
+        </div>
+        <div className="form-field">
+          <label htmlFor="skin">Skin</label>
+          <input
+            type="text"
+            id="skin"
+            value={formData.skin}
+            onChange={(e) => onChange('skin', e.target.value)}
+            placeholder="e.g., Warm, pale, diaphoretic. No rashes, lesions, or discoloration noted"
           />
         </div>
         <div className="form-field">
