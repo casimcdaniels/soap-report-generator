@@ -1,5 +1,5 @@
 {
-  "name": "soap-report-tool",
+  "name": "soap-report-generator",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
