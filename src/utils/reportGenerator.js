@@ -130,7 +130,8 @@ export function generateReport(formData) {
     report += '\n';
 
     // SUBJECTIVE Section
-    report += '-------- SUBJECTIVE ----------------------------------------\n';
+    report += 'S: Subjective\n';
+    report += '------------------------\n';
     
     // Chief Complaint
     if (chiefComplaint) {
@@ -174,7 +175,8 @@ export function generateReport(formData) {
     report += '\n\n';
 
     // OBJECTIVE Section
-    report += '-------- OBJECTIVE -----------------------------------------\n';
+    report += 'O: Objective\n';
+    report += '------------------------\n';
     
     // Physical Exam
     const physicalExamParts = [];
@@ -247,14 +249,16 @@ export function generateReport(formData) {
     report += '\n\n';
 
     // ASSESSMENT Section
-    report += '-------- ASSESSMENT ----------------------------------------\n';
+    report += 'A: Assessment\n';
+    report += '------------------------\n';
     if (assessment) {
         report += assessment;
     }
     report += '\n\n';
 
     // PLAN Section
-    report += '-------- PLAN ----------------------------------------------\n';
+    report += 'P: Plan\n';
+    report += '------------------------\n';
     if (plan) {
         report += plan;
     }
