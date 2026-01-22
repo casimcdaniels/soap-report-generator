@@ -9,45 +9,85 @@ import Preview from './components/Preview'
 import { generateReport } from './utils/reportGenerator'
 import './App.css'
 
+const STORAGE_KEY = 'soap-report-form-data'
+const TAB_STORAGE_KEY = 'soap-report-active-tab'
+
+const getDefaultFormData = () => ({
+  shiftType: 'ER',
+  date: new Date().toISOString().split('T')[0],
+  startTime: '',
+  endTime: '',
+  encounterTime: '',
+  age: '',
+  gender: '',
+  chiefComplaint: '',
+  symptoms: '',
+  allergies: '',
+  medications: '',
+  pastHistory: '',
+  lastOral: '',
+  events: '',
+  onset: '',
+  provokes: '',
+  quality: '',
+  radiation: '',
+  severity: '',
+  time: '',
+  generalAssessment: '',
+  physicalExam: '',
+  vitalTime: '',
+  pulse: '',
+  respRate: '',
+  bpSystolic: '',
+  bpDiastolic: '',
+  temp: '',
+  spo2: '',
+  glucose: '',
+  interventions: '',
+  assessment: '',
+  plan: ''
+})
+
 function App() {
-  const [activeTab, setActiveTab] = useState('shift')
-  const [formData, setFormData] = useState({
-    shiftType: 'ER',
-    date: new Date().toISOString().split('T')[0],
-    startTime: '',
-    endTime: '',
-    encounterTime: '',
-    age: '',
-    gender: '',
-    chiefComplaint: '',
-    symptoms: '',
-    allergies: '',
-    medications: '',
-    pastHistory: '',
-    lastOral: '',
-    events: '',
-    onset: '',
-    provokes: '',
-    quality: '',
-    radiation: '',
-    severity: '',
-    time: '',
-    generalAssessment: '',
-    physicalExam: '',
-    vitalTime: '',
-    pulse: '',
-    respRate: '',
-    bpSystolic: '',
-    bpDiastolic: '',
-    temp: '',
-    spo2: '',
-    glucose: '',
-    interventions: '',
-    assessment: '',
-    plan: ''
+  // Load form data and active tab from localStorage on mount
+  const [activeTab, setActiveTab] = useState(() => {
+    const savedTab = localStorage.getItem(TAB_STORAGE_KEY)
+    return savedTab || 'shift'
+  })
+
+  const [formData, setFormData] = useState(() => {
+    try {
+      const savedData = localStorage.getItem(STORAGE_KEY)
+      if (savedData) {
+        const parsed = JSON.parse(savedData)
+        // Merge with defaults to handle any missing fields
+        return { ...getDefaultFormData(), ...parsed }
+      }
+    } catch (error) {
+      console.error('Error loading form data from localStorage:', error)
+    }
+    return getDefaultFormData()
   })
 
   const [report, setReport] = useState('')
+
+  // Save form data to localStorage whenever it changes
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(formData))
+    } catch (error) {
+      console.error('Error saving form data to localStorage:', error)
+    }
+  }, [formData])
+
+  // Save active tab to localStorage whenever it changes
+  useEffect(() => {
+    try {
+      localStorage.setItem(TAB_STORAGE_KEY, activeTab)
+    } catch (error) {
+      console.error('Error saving active tab to localStorage:', error)
+    }
+  }, [activeTab])
 
   // Update report whenever formData changes
   useEffect(() => {
@@ -64,41 +104,14 @@ function App() {
 
   const handleClear = () => {
     if (window.confirm('Are you sure you want to clear all form fields?')) {
-      setFormData({
-        shiftType: 'ER',
-        date: new Date().toISOString().split('T')[0],
-        startTime: '',
-        endTime: '',
-        encounterTime: '',
-        age: '',
-        gender: '',
-        chiefComplaint: '',
-        symptoms: '',
-        allergies: '',
-        medications: '',
-        pastHistory: '',
-        lastOral: '',
-        events: '',
-        onset: '',
-        provokes: '',
-        quality: '',
-        radiation: '',
-        severity: '',
-        time: '',
-        generalAssessment: '',
-        physicalExam: '',
-        vitalTime: '',
-        pulse: '',
-        respRate: '',
-        bpSystolic: '',
-        bpDiastolic: '',
-        temp: '',
-        spo2: '',
-        glucose: '',
-        interventions: '',
-        assessment: '',
-        plan: ''
-      })
+      const defaultData = getDefaultFormData()
+      setFormData(defaultData)
+      // Clear localStorage as well
+      try {
+        localStorage.removeItem(STORAGE_KEY)
+      } catch (error) {
+        console.error('Error clearing localStorage:', error)
+      }
     }
   }
 

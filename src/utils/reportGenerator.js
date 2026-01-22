@@ -92,7 +92,7 @@ export function generateReport(formData) {
     
     // SAMPLE History
     const sampleParts = [];
-    if (symptoms) sampleParts.push(`Signs & Symptoms: ${symptoms}`);
+    if (symptoms) sampleParts.push(`Signs / Symptoms: ${symptoms}`);
     if (allergies) sampleParts.push(`Allergies: ${allergies}`);
     if (medications) sampleParts.push(`Medications: ${medications}`);
     if (pastHistory) sampleParts.push(`Past Medical History: ${pastHistory}`);
