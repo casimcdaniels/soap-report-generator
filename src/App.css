@@ -42,7 +42,7 @@ header {
 }
 
 header h1 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     margin: 0;
     font-weight: 600;
     flex: 1;
@@ -272,8 +272,8 @@ header p {
 }
 
 .patient-info-field label {
-    font-size: 0.8em;
-    margin-bottom: 2px;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
 }
 
 .patient-info-age-field {
@@ -289,8 +289,19 @@ header p {
 }
 
 .patient-info-input {
-    padding: 4px 6px !important;
-    font-size: 0.85em !important;
+    padding: 10px 14px !important;
+    font-size: 0.95rem !important;
+    border: 1px solid #d1d9e0 !important;
+    border-radius: 4px !important;
+    transition: all 0.2s ease !important;
+    background: #ffffff !important;
+    color: #2c3e50 !important;
+}
+
+.patient-info-input:focus {
+    outline: none !important;
+    border-color: #c41230 !important;
+    box-shadow: 0 0 0 3px rgba(196, 18, 48, 0.1) !important;
 }
 
 .form-group h2 {
@@ -827,7 +838,7 @@ header p {
 
 @media (max-width: 768px) {
     header h1 {
-        font-size: 2em;
+        font-size: 1.1rem;
     }
     
     .form-row {
