@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import ShiftInfo from './components/ShiftInfo'
 import PatientInfo from './components/PatientInfo'
 import Subjective from './components/Subjective'
 import Objective from './components/Objective'
@@ -9,7 +10,7 @@ import { generateReport } from './utils/reportGenerator'
 import './App.css'
 
 function App() {
-  const [activeTab, setActiveTab] = useState('patient')
+  const [activeTab, setActiveTab] = useState('shift')
   const [formData, setFormData] = useState({
     shiftType: 'ER',
     date: new Date().toISOString().split('T')[0],
@@ -102,6 +103,7 @@ function App() {
   }
 
   const tabs = [
+    { id: 'shift', label: 'Shift Info', color: '#6c757d' },
     { id: 'patient', label: 'Patient Info', color: '#003d82' },
     { id: 'subjective', label: 'Subjective', color: '#0066cc' },
     { id: 'objective', label: 'Objective', color: '#28a745' },
@@ -135,6 +137,9 @@ function App() {
           </div>
 
           <div className="tab-content">
+            {activeTab === 'shift' && (
+              <ShiftInfo formData={formData} onChange={handleChange} />
+            )}
             {activeTab === 'patient' && (
               <PatientInfo formData={formData} onChange={handleChange} />
             )}
