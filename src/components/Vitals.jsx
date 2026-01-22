@@ -75,7 +75,7 @@ function Vitals({ vitals, onChange }) {
         <div className="vitals-input-section">
           <div className="vitals-fields-grid">
             <div className="form-field">
-              <label htmlFor="vital-time">Time</label>
+              <label htmlFor="vital-time"><i className="fas fa-clock"></i> Time</label>
               <TimeInput
                 id="vital-time"
                 value={newTime}
@@ -84,7 +84,7 @@ function Vitals({ vitals, onChange }) {
               />
             </div>
             <div className="form-field">
-              <label htmlFor="vital-pulse">Pulse (bpm)</label>
+              <label htmlFor="vital-pulse"><i className="fas fa-heartbeat"></i> Pulse (bpm)</label>
               <input
                 type="number"
                 id="vital-pulse"
@@ -95,7 +95,7 @@ function Vitals({ vitals, onChange }) {
               />
             </div>
             <div className="form-field">
-              <label htmlFor="vital-respRate">RR (breaths/min)</label>
+              <label htmlFor="vital-respRate"><i className="fas fa-lungs"></i> RR (breaths/min)</label>
               <input
                 type="number"
                 id="vital-respRate"
@@ -106,7 +106,7 @@ function Vitals({ vitals, onChange }) {
               />
             </div>
             <div className="form-field">
-              <label htmlFor="vital-bpSystolic">BP Systolic</label>
+              <label htmlFor="vital-bpSystolic"><i className="fas fa-tint"></i> BP Systolic</label>
               <input
                 type="number"
                 id="vital-bpSystolic"
@@ -117,7 +117,7 @@ function Vitals({ vitals, onChange }) {
               />
             </div>
             <div className="form-field">
-              <label htmlFor="vital-bpDiastolic">BP Diastolic</label>
+              <label htmlFor="vital-bpDiastolic"><i className="fas fa-tint"></i> BP Diastolic</label>
               <input
                 type="number"
                 id="vital-bpDiastolic"
@@ -128,7 +128,7 @@ function Vitals({ vitals, onChange }) {
               />
             </div>
             <div className="form-field">
-              <label htmlFor="vital-temp">Temp (°F)</label>
+              <label htmlFor="vital-temp"><i className="fas fa-thermometer-half"></i> Temp (°F)</label>
               <input
                 type="number"
                 id="vital-temp"
@@ -140,7 +140,7 @@ function Vitals({ vitals, onChange }) {
               />
             </div>
             <div className="form-field">
-              <label htmlFor="vital-spo2">SpO2 (%)</label>
+              <label htmlFor="vital-spo2"><i className="fas fa-fingerprint"></i> SpO2 (%)</label>
               <input
                 type="number"
                 id="vital-spo2"
@@ -152,7 +152,7 @@ function Vitals({ vitals, onChange }) {
               />
             </div>
             <div className="form-field">
-              <label htmlFor="vital-glucose">Glucose (mg/dL)</label>
+              <label htmlFor="vital-glucose"><i className="fas fa-vial"></i> Glucose (mg/dL)</label>
               <input
                 type="number"
                 id="vital-glucose"
@@ -164,7 +164,7 @@ function Vitals({ vitals, onChange }) {
             </div>
           </div>
           <div className="form-field vitals-notes-field">
-            <label htmlFor="vital-notes">Notes</label>
+            <label htmlFor="vital-notes"><i className="fas fa-sticky-note"></i> Notes</label>
             <input
               type="text"
               id="vital-notes"

@@ -3,7 +3,7 @@ function Plan({ formData, onChange }) {
     <div className="form-group">
         <h2><i className="fas fa-route"></i> Plan/Disposition</h2>
       <div className="form-field">
-        <label htmlFor="plan">Plan/Disposition</label>
+        <label htmlFor="plan"><i className="fas fa-tasks"></i> Plan/Disposition</label>
         <textarea
           id="plan"
           value={formData.plan}

@@ -26,7 +26,7 @@ function GCSInput({ formData, onChange }) {
     <div className="gcs-container">
       <div className="gcs-fields">
         <div className="gcs-component">
-          <label htmlFor="gcsEyes">Eyes</label>
+          <label htmlFor="gcsEyes"><i className="fas fa-eye"></i> Eyes</label>
           <select
             id="gcsEyes"
             value={eyes}
@@ -41,7 +41,7 @@ function GCSInput({ formData, onChange }) {
           </select>
         </div>
         <div className="gcs-component">
-          <label htmlFor="gcsVerbal">Verbal</label>
+          <label htmlFor="gcsVerbal"><i className="fas fa-comments"></i> Verbal</label>
           <select
             id="gcsVerbal"
             value={verbal}
@@ -57,7 +57,7 @@ function GCSInput({ formData, onChange }) {
           </select>
         </div>
         <div className="gcs-component">
-          <label htmlFor="gcsMotor">Motor</label>
+          <label htmlFor="gcsMotor"><i className="fas fa-hand-rock"></i> Motor</label>
           <select
             id="gcsMotor"
             value={motor}

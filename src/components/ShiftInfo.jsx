@@ -6,7 +6,7 @@ function ShiftInfo({ formData, onChange }) {
       <h2><i className="fas fa-calendar-check"></i> Encounter</h2>
       <div className="form-row">
         <div className="form-field">
-          <label htmlFor="shiftType">Shift Type</label>
+          <label htmlFor="shiftType"><i className="fas fa-briefcase"></i> Shift Type</label>
           <select
             id="shiftType"
             value={formData.shiftType}
@@ -17,7 +17,7 @@ function ShiftInfo({ formData, onChange }) {
           </select>
         </div>
         <div className="form-field">
-          <label htmlFor="date">Date</label>
+          <label htmlFor="date"><i className="fas fa-calendar"></i> Date</label>
           <input
             type="date"
             id="date"
@@ -29,7 +29,7 @@ function ShiftInfo({ formData, onChange }) {
       </div>
       <div className="form-row">
         <div className="form-field">
-          <label htmlFor="startTime">Start Time (24-hour, HH:MM)</label>
+          <label htmlFor="startTime"><i className="fas fa-clock"></i> Start Time (24-hour, HH:MM)</label>
           <TimeInput
             id="startTime"
             value={formData.startTime}
@@ -39,7 +39,7 @@ function ShiftInfo({ formData, onChange }) {
           />
         </div>
         <div className="form-field">
-          <label htmlFor="endTime">End Time (24-hour, HH:MM)</label>
+          <label htmlFor="endTime"><i className="fas fa-clock"></i> End Time (24-hour, HH:MM)</label>
           <TimeInput
             id="endTime"
             value={formData.endTime}
@@ -50,7 +50,7 @@ function ShiftInfo({ formData, onChange }) {
         </div>
       </div>
       <div className="form-field">
-        <label htmlFor="encounterTime">Encounter Time (24-hour, HH:MM)</label>
+        <label htmlFor="encounterTime"><i className="fas fa-user-clock"></i> Encounter Time (24-hour, HH:MM)</label>
         <TimeInput
           id="encounterTime"
           value={formData.encounterTime}

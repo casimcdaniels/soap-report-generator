@@ -6,7 +6,7 @@ function PatientInfo({ formData, onChange }) {
         <h2><i className="fas fa-id-card"></i> Patient Information</h2>
       <div className="form-row">
         <div className="form-field">
-          <label htmlFor="age">Age</label>
+          <label htmlFor="age"><i className="fas fa-birthday-cake"></i> Age</label>
           <input
             type="number"
             id="age"
@@ -17,7 +17,7 @@ function PatientInfo({ formData, onChange }) {
           />
         </div>
         <div className="form-field">
-          <label htmlFor="gender">Sex</label>
+          <label htmlFor="gender"><i className="fas fa-venus-mars"></i> Sex</label>
           <select
             id="gender"
             value={formData.gender}

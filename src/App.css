@@ -238,11 +238,21 @@ header p {
 }
 
 .form-field label {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 6px;
     margin-bottom: 2px;
     font-weight: 600;
     color: #495057;
     font-size: 0.85em;
+}
+
+.form-field label i {
+    font-size: 0.9em;
+    color: var(--section-color, #0066cc);
+    opacity: 0.8;
+    width: 16px;
+    text-align: center;
 }
 
 .form-field input[type="text"],
@@ -303,6 +313,17 @@ header p {
     font-weight: 600;
     color: #495057;
     text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.gcs-component label i {
+    font-size: 0.85em;
+    color: #0066cc;
+    opacity: 0.8;
+    width: 14px;
+    text-align: center;
 }
 
 .gcs-select {

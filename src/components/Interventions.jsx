@@ -37,7 +37,7 @@ function Interventions({ interventions, onChange }) {
       <div className="interventions-form">
         <div className="interventions-input-row">
           <div className="form-field interventions-time-field">
-            <label htmlFor="intervention-time">Time</label>
+            <label htmlFor="intervention-time"><i className="fas fa-clock"></i> Time</label>
             <TimeInput
               id="intervention-time"
               value={newTime}
@@ -46,7 +46,7 @@ function Interventions({ interventions, onChange }) {
             />
           </div>
           <div className="form-field interventions-text-field">
-            <label htmlFor="intervention-text">Intervention</label>
+            <label htmlFor="intervention-text"><i className="fas fa-procedures"></i> Intervention</label>
             <input
               type="text"
               id="intervention-text"
