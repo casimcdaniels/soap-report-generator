@@ -136,7 +136,7 @@ function App() {
     { id: 'patient', label: 'Patient Info', color: '#003d82' },
     { id: 'subjective', label: 'Subjective', color: '#0066cc' },
     { id: 'objective', label: 'Objective', color: '#28a745' },
-    { id: 'assessment', label: 'Assessment', color: '#ffc107' },
+    { id: 'assessment', label: 'Assessment', color: '#ff9800' },
     { id: 'plan', label: 'Plan', color: '#dc3545' }
   ]
 
@@ -165,7 +165,7 @@ function App() {
             ))}
           </div>
 
-          <div className="tab-content">
+          <div className="tab-content" data-tab={activeTab}>
             {activeTab === 'shift' && (
               <ShiftInfo formData={formData} onChange={handleChange} />
             )}
