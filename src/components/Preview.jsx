@@ -24,9 +24,9 @@ function Preview({ report }) {
   return (
     <div className="preview-section">
       <div className="preview-header">
-        <h2><i className="fas fa-eye"></i> SOAP Report Preview</h2>
+        <h2><i className="fas fa-file-alt"></i> SOAP Report</h2>
         <button type="button" className="btn btn-copy" onClick={handleCopy}>
-          <i className="fas fa-copy"></i> Copy to Clipboard
+          <i className="fas fa-copy"></i>Copy to Clipboard
         </button>
       </div>
       <textarea

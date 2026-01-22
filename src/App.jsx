@@ -255,7 +255,6 @@ function App() {
             )}
           </div>
         </div>
-
         <Preview report={report} />
       </div>
     </div>
