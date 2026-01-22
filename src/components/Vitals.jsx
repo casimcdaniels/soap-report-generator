@@ -9,6 +9,7 @@ function Vitals({ vitals, onChange }) {
   const [newBpDiastolic, setNewBpDiastolic] = useState('')
   const [newTemp, setNewTemp] = useState('')
   const [newSpo2, setNewSpo2] = useState('')
+  const [newEtco2, setNewEtco2] = useState('')
   const [newGlucose, setNewGlucose] = useState('')
   const [newNotes, setNewNotes] = useState('')
 
@@ -20,6 +21,7 @@ function Vitals({ vitals, onChange }) {
       if (newBpSystolic && newBpDiastolic) vitalParts.push(`BP: ${newBpSystolic}/${newBpDiastolic}`)
       if (newTemp) vitalParts.push(`Temp: ${newTemp}°F`)
       if (newSpo2) vitalParts.push(`SpO2: ${newSpo2}%`)
+      if (newEtco2) vitalParts.push(`ETCO2: ${newEtco2} mmHg`)
       if (newGlucose) vitalParts.push(`Glucose: ${newGlucose} mg/dL`)
       
       let vitalText = vitalParts.join(', ')
@@ -37,6 +39,7 @@ function Vitals({ vitals, onChange }) {
           bpDiastolic: newBpDiastolic,
           temp: newTemp,
           spo2: newSpo2,
+          etco2: newEtco2,
           glucose: newGlucose,
           notes: newNotes.trim(),
           text: vitalText
@@ -56,6 +59,7 @@ function Vitals({ vitals, onChange }) {
         setNewBpDiastolic('')
         setNewTemp('')
         setNewSpo2('')
+        setNewEtco2('')
         setNewGlucose('')
         setNewNotes('')
       }
@@ -67,7 +71,7 @@ function Vitals({ vitals, onChange }) {
     onChange(updated)
   }
 
-  const hasVitalData = newPulse || newRespRate || (newBpSystolic && newBpDiastolic) || newTemp || newSpo2 || newGlucose || newNotes.trim()
+  const hasVitalData = newPulse || newRespRate || (newBpSystolic && newBpDiastolic) || newTemp || newSpo2 || newEtco2 || newGlucose || newNotes.trim()
 
   return (
     <div className="vitals-container">
@@ -106,28 +110,30 @@ function Vitals({ vitals, onChange }) {
               />
             </div>
             <div className="form-field">
-              <label htmlFor="vital-bpSystolic">BP Systolic</label>
-              <input
-                type="number"
-                id="vital-bpSystolic"
-                value={newBpSystolic}
-                onChange={(e) => setNewBpSystolic(e.target.value)}
-                min="0"
-                placeholder="120"
-              />
+              <label htmlFor="vital-bpSystolic">BP</label>
+              <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                <input
+                  type="number"
+                  id="vital-bpSystolic"
+                  value={newBpSystolic}
+                  onChange={(e) => setNewBpSystolic(e.target.value)}
+                  min="0"
+                  placeholder="120"
+                  style={{ flex: 1, minWidth: '60px', maxWidth: '80px' }}
+                />
+                <span style={{ color: '#666' }}>/</span>
+                <input
+                  type="number"
+                  id="vital-bpDiastolic"
+                  value={newBpDiastolic}
+                  onChange={(e) => setNewBpDiastolic(e.target.value)}
+                  min="0"
+                  placeholder="80"
+                  style={{ flex: 1, minWidth: '60px', maxWidth: '80px' }}
+                />
+              </div>
             </div>
-            <div className="form-field">
-              <label htmlFor="vital-bpDiastolic">BP Diastolic</label>
-              <input
-                type="number"
-                id="vital-bpDiastolic"
-                value={newBpDiastolic}
-                onChange={(e) => setNewBpDiastolic(e.target.value)}
-                min="0"
-                placeholder="80"
-              />
-            </div>
-            <div className="form-field">
+            <div className="form-field vitals-row-break">
               <label htmlFor="vital-temp">Temp (°F)</label>
               <input
                 type="number"
@@ -149,6 +155,17 @@ function Vitals({ vitals, onChange }) {
                 min="0"
                 max="100"
                 placeholder="98"
+              />
+            </div>
+            <div className="form-field">
+              <label htmlFor="vital-etco2">ETCO2 (mmHg)</label>
+              <input
+                type="number"
+                id="vital-etco2"
+                value={newEtco2}
+                onChange={(e) => setNewEtco2(e.target.value)}
+                min="0"
+                placeholder="40"
               />
             </div>
             <div className="form-field">

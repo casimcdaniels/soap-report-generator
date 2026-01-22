@@ -620,6 +620,14 @@ header p {
     gap: 8px;
 }
 
+.vitals-fields-grid .form-field:has(#vital-bpSystolic) {
+    grid-column: span 2;
+}
+
+.vitals-fields-grid .form-field.vitals-row-break {
+    grid-column: 1 / -1;
+}
+
 .vitals-notes-field {
     margin-top: 4px;
 }
