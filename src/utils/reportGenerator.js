@@ -50,7 +50,23 @@ export function generateReport(formData) {
 
     // Other sections
     const generalAssessment = formData.generalAssessment || '';
-    const physicalExam = formData.physicalExam || '';
+    const loc = formData.loc || '';
+    const gcsEyes = formData.gcsEyes || '';
+    const gcsVerbal = formData.gcsVerbal || '';
+    const gcsMotor = formData.gcsMotor || '';
+    const gcsTotal = formData.gcsTotal || '';
+    const airway = formData.airway || '';
+    const breathing = formData.breathing || '';
+    const circulation = formData.circulation || '';
+    const heent = formData.heent || '';
+    const neck = formData.neck || '';
+    const chest = formData.chest || '';
+    const upperExtremities = formData.upperExtremities || '';
+    const abdomen = formData.abdomen || '';
+    const pelvis = formData.pelvis || '';
+    const lowerExtremities = formData.lowerExtremities || '';
+    const back = formData.back || '';
+    const genitalia = formData.genitalia || '';
     const vitalTime = formatTime(formData.vitalTime) || encounterTime;
     const pulse = formData.pulse || '';
     const respRate = formData.respRate || '';
@@ -130,8 +146,26 @@ export function generateReport(formData) {
     report += '-------- OBJECTIVE -----------------------------------------\n';
     
     // Physical Exam
-    if (physicalExam) {
-        report += physicalExam;
+    const physicalExamParts = [];
+    if (loc) physicalExamParts.push(`LOC: ${loc}`);
+    if (gcsTotal) {
+      physicalExamParts.push(`GCS: ${gcsTotal}`);
+    }
+    if (airway) physicalExamParts.push(`Airway: ${airway}`);
+    if (breathing) physicalExamParts.push(`Breathing: ${breathing}`);
+    if (circulation) physicalExamParts.push(`Circulation: ${circulation}`);
+    if (heent) physicalExamParts.push(`HEENT: ${heent}`);
+    if (neck) physicalExamParts.push(`Neck: ${neck}`);
+    if (chest) physicalExamParts.push(`Chest: ${chest}`);
+    if (upperExtremities) physicalExamParts.push(`Upper Extremities: ${upperExtremities}`);
+    if (abdomen) physicalExamParts.push(`Abdomen: ${abdomen}`);
+    if (pelvis) physicalExamParts.push(`Pelvis: ${pelvis}`);
+    if (lowerExtremities) physicalExamParts.push(`Lower Extremities: ${lowerExtremities}`);
+    if (back) physicalExamParts.push(`Back: ${back}`);
+    if (genitalia) physicalExamParts.push(`Genitalia/Buttocks: ${genitalia}`);
+    
+    if (physicalExamParts.length > 0) {
+        report += physicalExamParts.join('\n');
     }
     
     // Vitals
@@ -144,13 +178,13 @@ export function generateReport(formData) {
     if (glucose) vitalsParts.push(`Glucose ${glucose} mg/dL`);
     
     if (vitalsParts.length > 0) {
-        if (physicalExam) report += '\n\n';
+        if (physicalExamParts.length > 0) report += '\n\n';
         report += `${vitalTime}: ${vitalsParts.join(', ')}`;
     }
     
     // Interventions
     if (interventions) {
-        if (physicalExam || vitalsParts.length > 0) report += '\n\n';
+        if (physicalExamParts.length > 0 || vitalsParts.length > 0) report += '\n\n';
         report += interventions;
     }
     

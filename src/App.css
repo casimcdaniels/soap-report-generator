@@ -139,6 +139,22 @@ header p {
     margin-bottom: 8px;
 }
 
+.loc-gcs-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.loc-field {
+    flex: 0 0 200px;
+    margin-bottom: 0;
+}
+
+.gcs-field {
+    flex: 1;
+    margin-bottom: 0;
+}
+
 .form-field {
     margin-bottom: 8px;
 }
@@ -182,6 +198,74 @@ header p {
     resize: vertical;
     min-height: 70px;
     line-height: 1.4;
+}
+
+.gcs-container {
+    flex: 1;
+    padding: 6px 8px;
+    background: #e9f2ff;
+    border-radius: 2px;
+    border: 1px solid #b3d4fc;
+}
+
+.gcs-fields {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.gcs-component {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 100px;
+    max-width: 140px;
+    flex: 0 1 auto;
+}
+
+.gcs-component label {
+    font-size: 0.7em;
+    font-weight: 600;
+    color: #495057;
+    text-align: left;
+}
+
+.gcs-select {
+    padding: 5px 6px;
+    border: 1px solid #dee2e6;
+    border-radius: 2px;
+    font-size: 0.8em;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+    width: 100%;
+}
+
+.gcs-select:focus {
+    outline: none;
+    border-color: #0066cc;
+    box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.1);
+}
+
+.gcs-total-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    margin-left: auto;
+}
+
+
+.gcs-total-value {
+    font-weight: 700;
+    font-size: 1.1em;
+    color: #003d82;
+    padding: 5px 8px;
+    background: white;
+    border: 2px solid #0066cc;
+    border-radius: 2px;
+    min-width: 40px;
+    text-align: center;
 }
 
 .form-actions {
