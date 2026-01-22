@@ -66,7 +66,7 @@ export function generateReport(formData) {
 
     // SAMPLE History
     const symptoms = formData.symptoms || '';
-    const allergies = formData.allergies || 'none';
+    const allergies = formData.allergies || '';
     const medications = formData.medications || '';
     const pastHistory = formData.pastHistory || '';
     const lastOral = formData.lastOral || '';
@@ -140,12 +140,12 @@ export function generateReport(formData) {
     
     // SAMPLE History
     const sampleParts = [];
-    if (symptoms) sampleParts.push(`Signs / Symptoms: ${symptoms}`);
-    if (allergies) sampleParts.push(`Allergies: ${allergies}`);
-    if (medications) sampleParts.push(`Medications: ${medications}`);
-    if (pastHistory) sampleParts.push(`Past Medical History: ${pastHistory}`);
-    if (lastOral) sampleParts.push(`Last: ${lastOral}`);
-    if (events) sampleParts.push(`Events: ${events}`);
+    if (symptoms && symptoms.trim()) sampleParts.push(`Signs / Symptoms: ${symptoms}`);
+    if (allergies && allergies.trim() && allergies.trim().toLowerCase() !== 'none') sampleParts.push(`Allergies: ${allergies}`);
+    if (medications && medications.trim()) sampleParts.push(`Medications: ${medications}`);
+    if (pastHistory && pastHistory.trim()) sampleParts.push(`Pertinent Medical History: ${pastHistory}`);
+    if (lastOral && lastOral.trim()) sampleParts.push(`Last: ${lastOral}`);
+    if (events && events.trim()) sampleParts.push(`Events: ${events}`);
     
     if (sampleParts.length > 0) {
         if (chiefComplaint) report += '\n\n';

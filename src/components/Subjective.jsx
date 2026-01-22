@@ -58,7 +58,7 @@ function Subjective({ formData, onChange }) {
           />
         </div>
         <div className="form-field">
-          <label htmlFor="pastHistory">P - Past Medical History</label>
+          <label htmlFor="pastHistory">P - Pertinent Medical History</label>
           <input
             type="text"
             id="pastHistory"
