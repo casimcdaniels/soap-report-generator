@@ -58,12 +58,12 @@ function Subjective({ formData, onChange }) {
           />
         </div>
         <div className="form-field">
-          <label htmlFor="lastOral">L - Last Oral Intake</label>
+          <label htmlFor="last">L - Last</label>
           <input
             type="text"
-            id="lastOral"
-            value={formData.lastOral}
-            onChange={(e) => onChange('lastOral', e.target.value)}
+            id="last"
+            value={formData.last}
+            onChange={(e) => onChange('last', e.target.value)}
             placeholder="e.g., Last ate lunch at 1200, last drank water at 1300"
           />
         </div>

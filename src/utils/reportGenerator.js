@@ -99,7 +99,7 @@ export function generateReport(formData) {
     const allergies = formData.allergies || '';
     const medications = formData.medications || '';
     const pastHistory = formData.pastHistory || '';
-    const lastOral = formData.lastOral || '';
+    const last = formData.last || '';
     const events = formData.events || '';
 
     // OPQRST
@@ -182,7 +182,7 @@ export function generateReport(formData) {
     if (allergies && allergies.trim()) sampleParts.push(`Allergies: ${allergies}`);
     if (medications && medications.trim()) sampleParts.push(`Medications: ${medications}`);
     if (pastHistory && pastHistory.trim()) sampleParts.push(`Pertinent Medical History: ${pastHistory}`);
-    if (lastOral && lastOral.trim()) sampleParts.push(`Last: ${lastOral}`);
+    if (last && last.trim()) sampleParts.push(`Last: ${last}`);
     if (events && events.trim()) sampleParts.push(`Events: ${events}`);
     
     if (sampleParts.length > 0) {

@@ -32,7 +32,7 @@ const getDefaultFormData = () => ({
   allergies: '',
   medications: '',
   pastHistory: '',
-  lastOral: '',
+  last: '',
   events: '',
   onset: '',
   provokes: '',
@@ -238,7 +238,7 @@ function App() {
         fieldsToClear.allergies = ''
         fieldsToClear.medications = ''
         fieldsToClear.pastHistory = ''
-        fieldsToClear.lastOral = ''
+        fieldsToClear.last = ''
         fieldsToClear.events = ''
         fieldsToClear.onset = ''
         fieldsToClear.provokes = ''
