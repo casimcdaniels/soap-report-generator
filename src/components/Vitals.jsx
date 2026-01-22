@@ -137,7 +137,7 @@ function Vitals({ vitals, onChange }) {
                 />
               </div>
             </div>
-            <div className="form-field vitals-row-break">
+            <div className="form-field vitals-row-break" style={{ maxWidth: '100px' }}>
               <label htmlFor="vital-temp">Temp (°F)</label>
               <input
                 type="number"
