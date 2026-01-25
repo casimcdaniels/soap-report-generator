@@ -178,7 +178,7 @@ export function generateReport(formData) {
     
     // SAMPLE History
     const sampleParts = [];
-    if (symptoms && symptoms.trim()) sampleParts.push(`Signs / Symptoms: ${symptoms}`);
+    if (symptoms && symptoms.trim()) sampleParts.push(`Symptoms: ${symptoms}`);
     if (allergies && allergies.trim()) sampleParts.push(`Allergies: ${allergies}`);
     if (medications && medications.trim()) sampleParts.push(`Medications: ${medications}`);
     if (pastHistory && pastHistory.trim()) sampleParts.push(`Pertinent Medical History: ${pastHistory}`);

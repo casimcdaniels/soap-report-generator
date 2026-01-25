@@ -18,7 +18,7 @@ function Subjective({ formData, onChange }) {
       <div className="form-group">
         <h2><i className="fas fa-history"></i> SAMPLE History</h2>
         <div className="form-field">
-          <label htmlFor="symptoms">S - Signs & Symptoms</label>
+          <label htmlFor="symptoms">S - Symptoms</label>
           <textarea
             id="symptoms"
             value={formData.symptoms}

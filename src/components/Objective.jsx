@@ -27,7 +27,7 @@ function Objective({ formData, onChange }) {
             id="loc"
             value={formData.loc}
             onChange={(e) => onChange('loc', e.target.value)}
-            placeholder="e.g., Alert and oriented x4, GCS 15, no loss of consciousness"
+            placeholder="e.g., AVPU/AOx4/LOC"
           />
         </div>
         <div className="form-field">
