@@ -12,9 +12,17 @@ import './App.css'
 const STORAGE_KEY = 'soap-report-form-data'
 const TAB_STORAGE_KEY = 'soap-report-active-tab'
 
-const getDefaultFormData = () => ({
+const getDefaultFormData = () => {
+  // Get today's date in local timezone (not UTC) to avoid date shifts
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  const localDate = `${year}-${month}-${day}`;
+  
+  return {
   shiftType: 'ER',
-  date: new Date().toISOString().split('T')[0],
+  date: localDate,
   startTime: '',
   endTime: '',
   encounterTime: '',
@@ -63,7 +71,8 @@ const getDefaultFormData = () => ({
   interventions: [],
   assessment: '',
   plan: ''
-})
+  };
+}
 
 function App() {
   // Load form data and active tab from localStorage on mount
@@ -133,6 +142,27 @@ function App() {
         // Ensure weightUnit has a default value
         if (!parsed.weightUnit) {
           parsed.weightUnit = 'lbs'
+        }
+        // Normalize date to YYYY-MM-DD format to avoid timezone issues
+        if (parsed.date) {
+          const dateStr = String(parsed.date).trim()
+          // Extract date part from ISO string if present (e.g., "2024-01-15T00:00:00.000Z" -> "2024-01-15")
+          // This prevents timezone conversion issues
+          const isoMatch = dateStr.match(/^(\d{4}-\d{2}-\d{2})/)
+          if (isoMatch) {
+            parsed.date = isoMatch[1]
+          } else if (!dateStr.match(/^\d{4}-\d{2}-\d{2}$/)) {
+            // If it's not already in YYYY-MM-DD format and not an ISO string,
+            // use local date methods to avoid UTC timezone issues
+            // Parse as local date to preserve the intended date
+            const dateObj = new Date(dateStr + 'T12:00:00') // Use noon to avoid DST issues
+            if (!isNaN(dateObj.getTime())) {
+              const year = dateObj.getFullYear()
+              const month = String(dateObj.getMonth() + 1).padStart(2, '0')
+              const day = String(dateObj.getDate()).padStart(2, '0')
+              parsed.date = `${year}-${month}-${day}`
+            }
+          }
         }
         // Merge with defaults to handle any missing fields
         return { ...getDefaultFormData(), ...parsed }

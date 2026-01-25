@@ -11,11 +11,33 @@ export function formatTime(timeString) {
 // Format date for display (full date format MM/DD/YYYY)
 export function formatDate(dateString) {
     if (!dateString) return '';
-    const date = new Date(dateString);
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    const year = date.getFullYear();
-    return `${month}/${day}/${year}`;
+    
+    // Convert to string and trim whitespace
+    const trimmed = String(dateString).trim();
+    
+    // Extract date part from ISO string if present (e.g., "2024-01-15T00:00:00.000Z" -> "2024-01-15")
+    // This prevents timezone conversion issues
+    let datePart = trimmed;
+    const isoMatch = trimmed.match(/^(\d{4}-\d{2}-\d{2})/);
+    if (isoMatch) {
+        datePart = isoMatch[1];
+    }
+    
+    // Parse YYYY-MM-DD format directly to avoid timezone issues
+    // HTML date inputs always return YYYY-MM-DD format
+    // Example: "2024-01-15" -> "01/15/2024"
+    const dateMatch = datePart.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (dateMatch) {
+        const year = dateMatch[1];   // e.g., "2024"
+        const month = dateMatch[2]; // e.g., "01"
+        const day = dateMatch[3];   // e.g., "15"
+        // Return MM/DD/YYYY format
+        return `${month}/${day}/${year}`;
+    }
+    
+    // If it's not in YYYY-MM-DD format, try to parse it as-is
+    // This handles edge cases where the date might already be formatted
+    return trimmed;
 }
 
 // Format time range
