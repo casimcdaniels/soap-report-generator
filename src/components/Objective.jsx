@@ -151,7 +151,7 @@ function Objective({ formData, onChange }) {
             id="neurological"
             value={formData.neurological}
             onChange={(e) => onChange('neurological', e.target.value)}
-            placeholder="e.g., Cranial nerves II-XII grossly intact. Motor strength 5/5 bilaterally upper and lower extremities. Sensation intact to light touch bilaterally"
+            placeholder="e.g., Moves all extremities, sensation intact, no obvious deficits"
           />
         </div>
         <div className="form-field">
