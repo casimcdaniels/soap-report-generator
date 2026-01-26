@@ -134,7 +134,7 @@ function Subjective({ formData, onChange }) {
           />
         </div>
         <div className="form-field">
-          <label htmlFor="time">T - Time</label>
+          <label htmlFor="time">T - Timing</label>
           <input
             type="text"
             id="time"

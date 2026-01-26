@@ -220,7 +220,7 @@ export function generateReport(formData) {
     if (quality) opqrstParts.push(`Quality: ${quality}`);
     if (radiation) opqrstParts.push(`Radiation: ${radiation}`);
     if (severity) opqrstParts.push(`Severity: ${severity}/10`);
-    if (time !== undefined && time !== null && time !== '') opqrstParts.push(`Time: ${time}`);
+    if (time !== undefined && time !== null && time !== '') opqrstParts.push(`Timing: ${time}`);
     
     if (opqrstParts.length > 0) {
         if (chiefComplaint || sampleParts.length > 0) report += '\n\n';
