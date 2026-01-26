@@ -139,6 +139,7 @@ export function generateReport(formData) {
     const gcsVerbal = formData.gcsVerbal || '';
     const gcsMotor = formData.gcsMotor || '';
     const gcsTotal = formData.gcsTotal || '';
+    const neurological = formData.neurological || '';
     const airway = formData.airway || '';
     const breathing = formData.breathing || '';
     const circulation = formData.circulation || '';
@@ -239,7 +240,7 @@ export function generateReport(formData) {
     
     // Physical Exam
     const physicalExamParts = [];
-    if (generalAssessment && (loc || gcsTotal || airway || breathing || circulation || skin || heent || neck || chest || upperExtremities || abdomen || pelvis || lowerExtremities || back || genitalia)) {
+    if (generalAssessment && (loc || gcsTotal || neurological || airway || breathing || circulation || skin || heent || neck || chest || upperExtremities || abdomen || pelvis || lowerExtremities || back || genitalia)) {
         report += '\n\n';
     }
     if (loc) physicalExamParts.push(`LOC: ${loc}`);
@@ -257,6 +258,7 @@ export function generateReport(formData) {
     if (abdomen) physicalExamParts.push(`Abdomen: ${abdomen}`);
     if (pelvis) physicalExamParts.push(`Pelvis: ${pelvis}`);
     if (lowerExtremities) physicalExamParts.push(`Lower Extremities: ${lowerExtremities}`);
+    if (neurological) physicalExamParts.push(`Neurological: ${neurological}`);
     if (back) physicalExamParts.push(`Back: ${back}`);
     if (genitalia) physicalExamParts.push(`Genitalia/Buttocks: ${genitalia}`);
     

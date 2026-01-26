@@ -54,6 +54,7 @@ const getDefaultFormData = () => {
   gcsVerbal: '',
   gcsMotor: '',
   gcsTotal: '',
+  neurological: '',
   airway: '',
   breathing: '',
   circulation: '',
@@ -217,9 +218,10 @@ function App() {
   const handleNewPatient = () => {
     if (window.confirm('Are you sure you want to clear all form fields and start a new patient?')) {
       const defaultData = getDefaultFormData()
-      // Preserve shift type, start time, and end time
+      // Preserve shift type, date, start time, and end time
       const preservedData = {
         shiftType: formData.shiftType,
+        date: formData.date,
         startTime: formData.startTime,
         endTime: formData.endTime,
       }
@@ -283,6 +285,7 @@ function App() {
         fieldsToClear.gcsVerbal = ''
         fieldsToClear.gcsMotor = ''
         fieldsToClear.gcsTotal = ''
+        fieldsToClear.neurological = ''
         fieldsToClear.airway = ''
         fieldsToClear.breathing = ''
         fieldsToClear.circulation = ''

@@ -145,6 +145,16 @@ function Objective({ formData, onChange }) {
           />
         </div>
         <div className="form-field">
+          <label htmlFor="neurological">Neurological</label>
+          <input
+            type="text"
+            id="neurological"
+            value={formData.neurological}
+            onChange={(e) => onChange('neurological', e.target.value)}
+            placeholder="e.g., Cranial nerves II-XII grossly intact. Motor strength 5/5 bilaterally upper and lower extremities. Sensation intact to light touch bilaterally"
+          />
+        </div>
+        <div className="form-field">
           <label htmlFor="back">Back</label>
           <input
             type="text"
