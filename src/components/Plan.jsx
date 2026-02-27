@@ -1,18 +1,28 @@
+import Interventions from './Interventions'
+
 function Plan({ formData, onChange }) {
   return (
-    <div className="form-group">
+    <>
+      <div className="form-group">
         <h2><i className="fas fa-route"></i> Plan/Disposition</h2>
-      <div className="form-field">
-
-        <textarea
-          id="plan"
-          value={formData.plan}
-          onChange={(e) => onChange('plan', e.target.value)}
-          rows="5"
-          placeholder="e.g., C-spine cleared by physician, backboard removed. EKG obtained, troponin ordered. Chest X-ray ordered. Continue monitoring vitals. Disposition pending imaging results and cardiac workup."
+        <div className="form-field">
+          <textarea
+            id="plan"
+            value={formData.plan}
+            onChange={(e) => onChange('plan', e.target.value)}
+            rows="5"
+            placeholder="e.g., C-spine cleared by physician, backboard removed. EKG obtained, troponin ordered. Chest X-ray ordered. Continue monitoring vitals. Disposition pending imaging results and cardiac workup."
+          />
+        </div>
+      </div>
+      <div className="form-group">
+        <h2><i className="fas fa-procedures"></i> Interventions</h2>
+        <Interventions
+          interventions={formData.interventions}
+          onChange={(value) => onChange('interventions', value)}
         />
       </div>
-    </div>
+    </>
   )
 }
 

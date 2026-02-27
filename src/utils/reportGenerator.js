@@ -274,7 +274,7 @@ export function generateReport(formData) {
         report += vitalsLines;
     }
     
-    // Timeline (interventions + vitals taken entries)
+    // Timeline (vitals taken entries only; interventions are in Plan section)
     const timelineItems = []
     
     // Add vitals taken entries to timeline
@@ -283,16 +283,6 @@ export function generateReport(formData) {
             timelineItems.push({
                 time: vital.time,
                 text: 'Vitals taken'
-            })
-        })
-    }
-    
-    // Add interventions to timeline
-    if (interventions && interventions.length > 0) {
-        interventions.forEach(intervention => {
-            timelineItems.push({
-                time: intervention.time,
-                text: intervention.text
             })
         })
     }
@@ -326,6 +316,11 @@ export function generateReport(formData) {
     report += '------------------------\n';
     if (plan) {
         report += plan;
+    }
+    if (interventions && interventions.length > 0) {
+        const interventionLines = interventions.map(i => `[${i.time}] - ${i.text}`).join('\n');
+        if (plan) report += '\n\n';
+        report += interventionLines;
     }
 
     return report.trim();

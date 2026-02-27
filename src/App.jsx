@@ -300,11 +300,11 @@ function App() {
         fieldsToClear.back = ''
         fieldsToClear.genitalia = ''
         fieldsToClear.vitals = []
-        fieldsToClear.interventions = []
       } else if (activeTab === 'assessment') {
         fieldsToClear.assessment = ''
       } else if (activeTab === 'plan') {
         fieldsToClear.plan = ''
+        fieldsToClear.interventions = []
       }
       
       setFormData(prev => ({

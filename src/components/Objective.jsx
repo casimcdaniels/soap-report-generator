@@ -1,7 +1,6 @@
 import TimeInput from './TimeInput'
 import GCSInput from './GCSInput'
 import Vitals from './Vitals'
-import Interventions from './Interventions'
 
 function Objective({ formData, onChange }) {
   return (
@@ -184,13 +183,6 @@ function Objective({ formData, onChange }) {
             <Vitals
               vitals={formData.vitals}
               onChange={(value) => onChange('vitals', value)}
-            />
-          </div>
-          <div className="timeline-subsection">
-            <h3><i className="fas fa-procedures"></i> Interventions</h3>
-            <Interventions
-              interventions={formData.interventions}
-              onChange={(value) => onChange('interventions', value)}
             />
           </div>
         </div>
