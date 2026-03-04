@@ -274,33 +274,6 @@ export function generateReport(formData) {
         report += vitalsLines;
     }
     
-    // Timeline (vitals taken entries only; interventions are in Plan section)
-    const timelineItems = []
-    
-    // Add vitals taken entries to timeline
-    if (vitals && vitals.length > 0) {
-        vitals.forEach(vital => {
-            timelineItems.push({
-                time: vital.time,
-                text: 'Vitals taken'
-            })
-        })
-    }
-    
-    // Sort timeline by time and display
-    if (timelineItems.length > 0) {
-        timelineItems.sort((a, b) => {
-            const timeA = a.time.replace(':', '')
-            const timeB = b.time.replace(':', '')
-            return timeA.localeCompare(timeB)
-        })
-        
-        if (physicalExamParts.length > 0 || (vitals && vitals.length > 0)) report += '\n\n'
-        report += 'Timeline\n'
-        const timelineLines = timelineItems.map(item => `[${item.time}] - ${item.text}`).join('\n')
-        report += timelineLines
-    }
-    
     report += '\n\n';
 
     // ASSESSMENT Section
